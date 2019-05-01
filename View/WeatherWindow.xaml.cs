@@ -23,13 +23,6 @@ namespace WeatherApp.View
         public WeatherWindow()
         {
             InitializeComponent();
-            //GetWeather = test module
-            GetWeather();
-        }
-
-        private async void GetWeather()
-        {
-            var weather = await WeatherAPI.GetWeatherInformationAsync("16536");
         }
     }
 }

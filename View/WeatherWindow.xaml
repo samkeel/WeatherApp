@@ -18,6 +18,9 @@
     
     <Grid DataContext="{StaticResource vm}">
         <StackPanel Margin="10">
+            <Button Content="Refresh"
+                    Command="{Binding Source={StaticResource vm}, Path=RefreshCommand}"
+                    Margin="0 0 0 10"/>
             <TextBox Text="{Binding Source={StaticResource vm}, Path=Query, Mode=TwoWay, 
                 UpdateSourceTrigger=PropertyChanged}" />
             <ListView Height="100"
@@ -26,7 +29,6 @@
                       ItemsSource="{Binding Source={StaticResource vm}, Path=Cities}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <!--<TextBlock Text="{Binding LocalizedName}" />-->
                         <TextBlock>
                             <Run Text="{Binding LocalizedName}"/>
                             <Run Text=", "/>
@@ -37,7 +39,7 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <TextBlock Text="Morley"
+            <TextBlock Text="City:"
                        Margin="0 20 0 0"
                        FontSize="20"
                        FontWeight="Bold"/>

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WeatherApp.Model;
+using WeatherApp.ViewModel.Commands;
 
 namespace WeatherApp.ViewModel
 {
@@ -37,12 +38,15 @@ namespace WeatherApp.ViewModel
             }
         }
 
+        public RefreshCommand RefreshCommand { get; set; }
+
 
         public WeatherVM()
         {
             Forecasts = new ObservableCollection<DailyForecast>();
             Cities = new ObservableCollection<City>();
             SelectedResult = new City();
+            RefreshCommand = new RefreshCommand(this);
         }
 
 
@@ -57,7 +61,7 @@ namespace WeatherApp.ViewModel
             }
         }
 
-        private async void GetWeather()
+        public async void GetWeather()
         {
             //will initiate null - pending item selection
             var weather = await WeatherAPI.GetWeatherInformationAsync(SelectedResult.Key);
